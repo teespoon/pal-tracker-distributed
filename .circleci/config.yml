@@ -79,13 +79,13 @@ jobs:
       - run:
           name: Deploy
           command: |
-            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/allocations-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s sandbox
             cf push -f manifest-allocations.yml
+            chmod +x ./migrate-databases.sh
             ./migrate-databases.sh tracker-allocations /tmp/extracted-archive/migrations /root/project
 
   deployBacklog:
@@ -120,13 +120,13 @@ jobs:
       - run:
           name: Deploy
           command: |
-            chmod +x ./migrate-databases.sh 
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/backlog-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s sandbox
             cf push -f manifest-backlog.yml
+            chmod +x ./migrate-databases.sh 
             ./migrate-databases.sh tracker-backlog /tmp/extracted-archive/migrations /root/project
 
   deployRegistration:
@@ -161,13 +161,13 @@ jobs:
       - run:
           name: Deploy
           command: | 
-            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/registration-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s sandbox
             cf push -f manifest-registration.yml
+            chmod +x ./migrate-databases.sh
             ./migrate-databases.sh tracker-registration /tmp/extracted-archive/migrations /root/project
 
   deployTimesheets:
@@ -202,13 +202,13 @@ jobs:
       - run:
           name: Deploy
           command: |
-            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/timesheets-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s sandbox
             cf push -f manifest-timesheets.yml
+            chmod +x ./migrate-databases.sh
             ./migrate-databases.sh tracker-timesheets /tmp/extracted-archive/migrations /root/project
 
 
