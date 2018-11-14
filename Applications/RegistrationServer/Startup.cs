@@ -11,7 +11,6 @@ using Projects;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
 using Users;
 using Pivotal.Discovery.Client;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Steeltoe.Security.Authentication.CloudFoundry;
 
 namespace RegistrationServer
