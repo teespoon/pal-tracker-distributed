@@ -2,12 +2,15 @@
 applications:
 - name: tracker-timesheets
   instances: 1
-  memory: 256M
-  routes:
-  - route: timesheets-pal-HotSauce.apps.pikes.pal.pivotal.io
-  path: Applications/TimesheetsServer/bin/Release/netcoreapp2.1/publish
-  services:
-  - tracker-timesheets-database
-  - tracker-service-registry
-  - tracker-circuit-breaker-dashboard
-  - tracker-amqp
+    memory: 256M
+    routes:
+    - route: allocations-pal-HotSauce.apps.pikes.pal.pivotal.io
+    path: Applications/AllocationsServer/bin/Release/netcoreapp2.1/publish
+    env:
+      GRANT_TYPE: client_credentials
+    services:
+    - tracker-allocations-database
+    - tracker-service-registry
+    - tracker-circuit-breaker-dashboard
+    - tracker-amqp
+    - tracker-sso
