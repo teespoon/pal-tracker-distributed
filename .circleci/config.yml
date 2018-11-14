@@ -35,6 +35,7 @@ jobs:
       - run:
           name: Test and build
           command: |
+            chmod +x ./scripts/build.sh 
             dotnet test
             ./scripts/build.sh $CIRCLE_SHA1
 
@@ -78,6 +79,7 @@ jobs:
       - run:
           name: Deploy
           command: |
+            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/allocations-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
@@ -118,6 +120,7 @@ jobs:
       - run:
           name: Deploy
           command: |
+            chmod +x ./migrate-databases.sh 
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/backlog-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
@@ -157,7 +160,8 @@ jobs:
 
       - run:
           name: Deploy
-          command: |
+          command: | 
+            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/registration-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
@@ -198,6 +202,7 @@ jobs:
       - run:
           name: Deploy
           command: |
+            chmod +x ./migrate-databases.sh
             mkdir -p $EXTRACT_DEST
             tar -xvzf artifacts/timesheets-server-$CIRCLE_SHA1.tgz -C $EXTRACT_DEST
             cd $EXTRACT_DEST
