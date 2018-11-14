@@ -1,6 +1,6 @@
 {
   "git": {
-    "uri": "https://github.com/<your-github-username>/tracker-config.git",
+    "uri": "https://github.com/teespoon/tracker-config.git",
     "label": "master"
   }
 }
